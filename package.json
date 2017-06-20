@@ -12,9 +12,11 @@
     "build:markups": "posthtml -i src/ -o dist/",
     "build:styles": "postcss -i src/**/*.css -d dist/",
     "build:scripts": "rollup -c",
+    "serve": "browser-sync start --server dist/ --open external --files dist/**",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
+    "browser-sync": "^2.18.12",
     "postcss-cli": "^4.1.0",
     "postcss-cssnext": "^2.11.0",
     "postcss-import": "^10.0.0",
