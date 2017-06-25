@@ -9,7 +9,7 @@
     "prestart": "npm run build",
     "start": "npm run watch & npm run serve",
     "build": "npm run build:markups & npm run build:styles & npm run build:scripts",
-    "build:markups": "posthtml -i src/ -o dist/",
+    "build:markup": "posthtml -i src/**/*.html -o dist/ -c posthtml.config.js",
     "build:style": "postcss src/**/*.css -d dist/styles/",
     "build:script": "rollup -c",
     "serve": "browser-sync start --server dist/ --open external --files dist/**",
