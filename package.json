@@ -10,8 +10,8 @@
     "start": "npm run watch & npm run serve",
     "build": "npm run build:markups & npm run build:styles & npm run build:scripts",
     "build:markups": "posthtml -i src/ -o dist/",
-    "build:styles": "postcss -i src/**/*.css -d dist/",
     "build:scripts": "rollup -c",
+    "build:style": "postcss src/**/*.css -d dist/styles/",
     "serve": "browser-sync start --server dist/ --open external --files dist/**",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -27,7 +27,19 @@
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-node-resolve": "^3.0.0"
   },
-  "posthtml": {
-    "w3c": {}
+  "browserslist": {
+    "production": [
+      "last 2 Chrome versions",
+      "last 2 Edge versions",
+      "ie 11",
+      "last 2 Firefox versions",
+      "last 2 Safari versions",
+      "last 2 iOS versions",
+      "Android >= 4.4",
+      "last 2 ChromeAndroid versions"
+    ],
+    "development": [
+      ">1% in JP"
+    ]
   }
 }
