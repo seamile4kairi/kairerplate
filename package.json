@@ -6,9 +6,10 @@
   "author": "Kairi <seamile.rivercape@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "prestart": "npm run build",
-    "start": "npm run watch & npm run serve",
-    "build": "npm run build:markups & npm run build:styles & npm run build:scripts",
+    "prestart": "npm i",
+    "start": "npm run build",
+    "poststart": "npm run watch & npm run serve",
+    "build": "npm run build:markup & npm run build:style & npm run build:script",
     "build:markup": "posthtml -i src/**/*.html -o dist/ -c posthtml.config.js",
     "build:style": "postcss src/**/*.css -d dist/styles/",
     "build:script": "rollup -c",
