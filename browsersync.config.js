@@ -19,6 +19,8 @@ module.exports = {
             case 'js': task = 'build:script'; break;
             default: task = 'build:copy';
           }
+        } else {
+          task = `clean -- --target=${file.replace(config.src, config.dest)}`;
         }
         console.log(`Running: npm run ${task}`);
         cmd.run(`npm run ${task}`);
