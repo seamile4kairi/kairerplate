@@ -18,6 +18,12 @@
     "serve": "browser-sync start --config browsersync.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "stylelint": {
+    "rules": {
+      "font-family-name-quotes": "always-where-recommended",
+      "font-weight-notation": "numeric"
+    }
+  },
   "devDependencies": {
     "browser-sync": "^2.18.12",
     "css-declaration-sorter": "^2.0.1",
@@ -39,5 +45,10 @@
     "rollup-plugin-node-resolve": "^3.0.0",
     "stylelint": "^7.12.0",
     "stylelint-config-standard": "^16.0.0"
+  },
+  "dependencies": {
+    "locate-path": "^2.0.0",
+    "magic-string": "^0.22.2",
+    "set-blocking": "^2.0.0"
   }
 }
