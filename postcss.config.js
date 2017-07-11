@@ -19,11 +19,11 @@ module.exports = {
           'last 2 ChromeAndroid versions'
         ]
       },
-      nesting: true
+      nesting: false
     },
     'css-declaration-sorter': {
       order: 'smacss'
-    }
+    },
     'postcss-reporter': {
       clearMessages: true
     }

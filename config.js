@@ -20,7 +20,7 @@ process.argv
 
 module.exports = {
   src:  process.env.npm_package_config_src  || `src`,
-  dest: process.env.npm_package_config_dest || `dest`,
+  dest: process.env.npm_package_config_dest || `dist`,
   ext:  exts,
   opts: opts
 };
