@@ -1,14 +1,13 @@
 const globby = require('globby');
-const fs = require('fs');
+const fs = require('node-fs-extra');
 
-globby('src/**/*.{jpg,gif,png,svg,ico}').then(paths => {
+const config = require('./config'),
+      target = config.opts.target || `${config.src}/**/*.{jpg,gif,png,svg,ico}`;
+
+globby(target).then(paths => {
   for (path of paths) {
-    let dest = path.replace(/src/g, 'dist');
-    fs.readFile(path, (err, data) => {
-      if (err) throw err;
-      return fs.writeFile(dest, data, err => {
+    fs.copy(path, path.replace(config.src, config.dest), err => {
         if (err) throw err;
-      });
     });
   }
 });
