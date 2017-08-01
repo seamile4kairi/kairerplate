@@ -1,25 +1,38 @@
 const cmd = require('node-cmd');
 const bs = require('browser-sync');
 
+const config = require('./config');
+
 module.exports = {
   files: [
-    'dist/**/*',
+    `${config.dest}/**/*`,
     {
       match: [
-        'src/**/*'
+        `${config.src}/**/*`
       ],
       fn: (event, file) => {
-        let script;
-        switch (file.slice(file.lastIndexOf('.') + 1)) {
-          case 'html': script = 'markup'; break;
-          case 'css': script = 'style'; break;
-          case 'js': script = 'script'; break;
-          default: script = 'copy';
+        let task;
+        if (!event.match(/unlink/g)) {
+          switch (file.slice(file.lastIndexOf('.') + 1)) {
+            case 'html': task = `build:markup -- -i ${file}`; break;
+            case 'css': task = 'build:style'; break;
+            case 'js': task = 'build:script'; break;
+            default: task = `build:copy -- --target=${file}`;
+          }
+        } else {
+          task = `clean -- --target=${file.replace(config.src, config.dest)}`;
         }
-        cmd.run(`npm run build:${script}`);
+        console.log(`Running: npm run ${task}`);
+        cmd.run(`npm run ${task}`);
       }
     }
   ],
-  server: "dist",
-  open: "external"
+  watchEvents: [
+    'add',
+    'change',
+    'unlink',
+    'unlinkDir'
+  ],
+  server: config.dest,
+  open: 'external'
 };
