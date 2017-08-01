@@ -5,7 +5,6 @@ module.exports = {
         require('postcss-import-url'),
       ]
     },
-    'postcss-nesting': {},
     'postcss-cssnext': {
       autoprefixer: {
         browsers: [
@@ -18,12 +17,13 @@ module.exports = {
           'Android >= 4.4',
           'last 2 ChromeAndroid versions'
         ]
-      },
-      nesting: false
+      }
     },
+    'postcss-nested': {},
     'css-declaration-sorter': {
       order: 'smacss'
     },
+    'postcss-discard-empty': {},
     'postcss-reporter': {
       clearMessages: true
     }

@@ -17,7 +17,7 @@ module.exports = {
             case 'html': task = `build:markup -- -i ${file}`; break;
             case 'css': task = 'build:style'; break;
             case 'js': task = 'build:script'; break;
-            default: task = 'build:copy';
+            default: task = `build:copy -- --target=${file}`;
           }
         } else {
           task = `clean -- --target=${file.replace(config.src, config.dest)}`;
