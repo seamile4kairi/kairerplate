@@ -33,27 +33,36 @@
       "font-weight-notation": "numeric"
     }
   },
+  "dependencies": {
+    "autotrack": "^2.4.1"
+  },
   "devDependencies": {
     "browser-sync": "^2.18.13",
-    "css-declaration-sorter": "^2.0.1",
-    "fs-extra": "^4.0.1",
+    "css-declaration-sorter": "^2.1.0",
+    "fs-extra": "^4.0.2",
     "globby": "^6.1.0",
     "node-cmd": "^3.0.0",
-    "postcss-cli": "^4.1.0",
+    "postcss-cli": "^4.1.1",
     "postcss-cssnext": "^3.0.2",
+    "postcss-discard-comments": "^2.0.4",
     "postcss-discard-empty": "^2.1.0",
-    "postcss-import": "^10.0.0",
+    "postcss-import": "^11.0.0",
     "postcss-import-url": "^2.2.0",
-    "postcss-nested": "^2.1.0",
+    "postcss-nested": "^2.1.2",
     "postcss-reporter": "^5.0.0",
     "posthtml": "^0.9.2",
+    "posthtml-bem": "^0.2.2",
+    "posthtml-classes": "^0.2.1",
+    "posthtml-expressions": "^1.1.0",
+    "posthtml-extend": "^0.1.2",
     "posthtml-hint": "^0.8.1",
     "posthtml-w3c": "^0.8.1",
-    "rollup": "^0.45.2",
-    "rollup-plugin-buble": "^0.15.0",
-    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup": "^0.50.0",
+    "rollup-plugin-buble": "^0.16.0",
+    "rollup-plugin-commonjs": "^8.2.1",
+    "rollup-plugin-eslint": "^4.0.0",
     "rollup-plugin-node-resolve": "^3.0.0",
-    "stylelint": "^8.0.0",
+    "stylelint": "^8.1.1",
     "stylelint-config-standard": "^17.0.0"
   }
 }
