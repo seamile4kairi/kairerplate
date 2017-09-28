@@ -7,16 +7,20 @@
   "repository": "https://github.com/seamile4kairi/personal_template",
   "license": "MIT",
   "scripts": {
-    "prestart": "npm i",
-    "start": "npm run clean && npm run build",
+    "prestart": "npm i && npm run clean",
+    "start": "npm run build",
     "poststart": "npm run serve",
-    "build": "npm run build:markup & npm run build:style & npm run build:script & npm run build:copy",
+    "prebuild": "npm i",
+    "build": "npm run build:copy && npm run build:style && npm run build:script && npm run build:markup",
     "build:markup": "node posthtml.config.js",
     "build:style": "postcss src/**/*.css -d dist/styles/",
     "build:script": "rollup -c",
     "build:copy": "node copy.config.js",
+    "build:production": "NODE_ENV=production npm run build",
     "clean": "node clean.config.js",
+    "preserve": "npm i",
     "serve": "browser-sync start --config browsersync.config.js",
+    "postversion": "npm run build:production && git add -A && git commit -m \"[clean] Output files for production\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "config": {
