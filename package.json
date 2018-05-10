@@ -1,6 +1,6 @@
 {
   "name": "kairi_template",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "private": "true",
   "description": "The website builder for/by Kairi KAWASAKI.",
   "author": "Kairi <seamile.rivercape@gmail.com>",
@@ -21,12 +21,13 @@
     "prestart": "npm i",
     "start": "npm run build",
     "poststart": "npm run serve",
-    "pretest": "npm i && npm run clean",
+    "pretest": "npm i",
     "test": "npm run test:build",
     "posttest": "npm run test:serve",
+    "pretest:build": "npm run clean",
     "test:build": "NODE_ENV=production npm run build",
     "test:serve": "NODE_ENV=production npm run serve",
-    "build": "npm run build:markup & npm run build:style & npm run build:script & npm run build:image",
+    "build": "npm run build:markup & npm run build:image & npm run build:script & npm run build:style",
     "postbuild": "npm run copy",
     "build:markup": "node bin/posthtml.js",
     "build:style": "postcss $npm_package_config_src/$npm_package_config_ptrn_build_style -o $npm_package_config_dest/$npm_package_config_ptrn_build_style",
@@ -37,7 +38,8 @@
     "clean": "rimraf $npm_package_config_dest/*",
     "clean:target": "rimraf",
     "serve": "browser-sync start -c browsersync.config.js",
-    "postversion": "npm run test:build && git add -A && git commit -m \"[clean] Output files for production\""
+    "preversion": "npm run test:build && git add -A $npm_package_config_dest || exit 0",
+    "postversion": "git push && git push --tags"
   },
   "dependencies": {
     "autotrack": "^2.4.1"
