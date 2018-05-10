@@ -23,8 +23,8 @@ Then, the following tasks are executed:
 
 1.	Install required modules
 	(``npm i``)
-2.	Build HTML, CSS, JS, and copy other specified files
-	(``npm run build`` -> ``npm run build:(markup|style|script)`` -> ``npm run copy``)
+2.	Build HTML, CSS, JS, images, and copy other specified files
+	(``npm run build`` -> ``npm run build:(markup|style|script|image)`` -> ``npm run copy``)
 3.	Display the built pages on your default browser
 	(``npm run serve``)
 4. Watch file changes, then rerun the building task
@@ -95,6 +95,17 @@ The process of reading/writing files is defined in ``bin/posthtml.js``.
 
 - ``rollup.config.js`` – Processing contents of JS transform
 - ``.eslintrc.js`` – Definitions of JS linter
+
+### ``npm run build:image``
+
+=> Compresses images.
+
+#### Configurations
+
+- ``imagemin.config.js`` – Processing contents of image compression
+- ``.svgorc`` – Definitions of SVG optimization
+
+The process of reading/writing files is defined in ``bin/imagemin.js``.
 
 ### ``npm run copy``
 
