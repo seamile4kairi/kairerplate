@@ -1,31 +1,76 @@
+// Configurations
+// -------------------------------------------------------------
+
+const {
+  isPrd,
+  src,
+  ptrn
+} = require('./bin/config');
+
+const svgorc = require('./.svgorc');
+
+// Module Exports
+// -------------------------------------------------------------
+
+// cf.) https://github.com/postcss/postcss#options
+
 module.exports = {
   plugins: {
     'postcss-import': {
+      path: [
+        `node_modules`,
+      ],
       plugins: [
         require('postcss-import-url'),
-      ]
+      ],
     },
-    'postcss-cssnext': {
-      autoprefixer: {
-        browsers: [
-          'last 2 Chrome versions',
-          'last 2 Edge versions',
-          'ie 11',
-          'last 2 Firefox versions',
-          'last 2 Safari versions',
-          'last 2 iOS versions',
-          'Android >= 4.4',
-          'last 2 ChromeAndroid versions'
-        ]
-      }
-    },
-    'postcss-nested': {},
     'css-declaration-sorter': {
       order: 'smacss'
     },
-    'postcss-discard-empty': {},
+    'stylelint': {
+      syntax: 'scss',
+      ignoreFiles: [
+        `node_modules/**`,
+        `${src}/lib/**`,
+      ],
+    },
+    'postcss-cssnext': {
+      features: {
+        calc: {
+          preserve: !isPrd
+        },
+        customMedia: {
+          preserve: !isPrd
+        },
+        customProperties: {
+          preserve: !isPrd
+        },
+        filter: false,
+      },
+      warnForDuplicates: false,
+    },
+    'postcss-nested': {},
+    'postcss-extend': {},
+    'cssnano': {
+      preset: 'default',
+      calc: false,
+      mergeLonghand: false,
+      minifyFontValues: {
+        removeQuotes: false,
+      },
+      minifyParams: false,
+      minifySelectors: false,
+      svgo: Object.assign(svgorc, {
+        // cf.) https://github.com/ben-eb/cssnano/tree/master/packages/postcss-svgo#options
+        encode: true,
+      }),
+    },
+    'perfectionist': {
+      indentSize: 2,
+      zeroLengthNoUnit: isPrd
+    },
     'postcss-reporter': {
-      clearMessages: true
+      clearReportedMessages: true
     }
   }
 };
