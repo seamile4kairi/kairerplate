@@ -38,7 +38,8 @@
     "clean": "rimraf $npm_package_config_dest/*",
     "clean:target": "rimraf",
     "serve": "browser-sync start -c browsersync.config.js",
-    "preversion": "npm run test:build && git add -A $npm_package_config_dest || exit 0"
+    "preversion": "npm run test:build && git add -A $npm_package_config_dest || exit 0",
+    "postversion": "git push && git push --tags"
   },
   "dependencies": {
     "autotrack": "^2.4.1"
