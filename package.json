@@ -26,7 +26,7 @@
     "posttest": "npm run test:serve",
     "test:build": "NODE_ENV=production npm run build",
     "test:serve": "NODE_ENV=production npm run serve",
-    "build": "npm run build:markup & npm run build:style & npm run build:script & npm run build:image",
+    "build": "npm run build:markup & npm run build:image & npm run build:script & npm run build:style",
     "postbuild": "npm run copy",
     "build:markup": "node bin/posthtml.js",
     "build:style": "postcss $npm_package_config_src/$npm_package_config_ptrn_build_style -o $npm_package_config_dest/$npm_package_config_ptrn_build_style",
