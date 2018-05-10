@@ -1,0 +1,27 @@
+<scope with="pages.{{ id }}">
+
+  <!DOCTYPE html>
+  <html dir="{{ dir }}" lang="{{ lang }}">
+
+    <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# {{ og_type }}: http://ogp.me/ns/{{ og_type }}#">
+      <block name="prepend-head"></block>
+      <extends src=".templates/common/meta.html"></extends>
+      <extends src=".templates/common/styles.html"></extends>
+      <block name="append-head"></block>
+    </head>
+
+    <body id="{{ id }}">
+      <block name="prepend-body"></block>
+
+      <!-- Contents Container -->
+      <div class="container">
+        <block name="content"></block>
+      </div>
+
+      <extends src=".templates/common/scripts.html"></extends>
+      <block name="append-body"></block>
+    </body>
+
+  </html>
+
+</scope>
