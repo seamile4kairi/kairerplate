@@ -1,7 +1,7 @@
 // Modules
 // =============================================================
 
-// import theModule from './modules/theModule';
+// import theModule from './theScript'
 
 
 // Common
