@@ -3,6 +3,9 @@ logs
 *.log
 npm-debug.log*
 
+# Cache
+.parcel-cache
+
 # Runtime data
 pids
 *.pid
