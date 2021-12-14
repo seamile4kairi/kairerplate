@@ -1,0 +1,28 @@
+<% const Contents = __append => { %>
+  <section class="dummy">
+    <div class="container">
+      <header class="dummy__header">
+        <h2 class="dummy__header-headline">
+          Here is a dummy page.
+        </h2>
+      </header>
+      <div class="dummy__content">
+        <p>This is just a dummy content.</p>
+      </div>
+    </div>
+  </section>
+<% } %>
+<%-
+include('/layouts/Default', {
+  Contents,
+  path: '',
+  title: '',
+  description: '',
+  thumbnail: '',
+  locale: '',
+  lang: '',
+  og_type: '',
+  og_site_name: '',
+  twitter_card: '',
+})
+%>

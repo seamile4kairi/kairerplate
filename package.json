@@ -1,83 +1,69 @@
 {
   "name": "kairi_template",
   "version": "0.2.1",
-  "private": "true",
+  "private": true,
   "description": "The website builder for/by Kairi KAWASAKI.",
   "author": "Kairi <seamile.rivercape@gmail.com>",
   "repository": "https://github.com/seamile4kairi/personal_template",
   "license": "MIT",
-  "config": {
-    "src": "src",
-    "dest": "dist",
-    "ptrn": {
-      "build:markup": "**/*.html",
-      "build:style": "styles/style.css",
-      "build:script": "scripts/main.js",
-      "build:image": "**/*.{jpg,gif,png,svg,ico}",
-      "copy": "**/*.{mp3,mp4,m4v,pdf,zip}"
-    }
-  },
   "scripts": {
-    "prestart": "npm i",
-    "start": "npm run build",
-    "poststart": "npm run serve",
-    "pretest": "npm i",
-    "test": "npm run test:build",
-    "posttest": "npm run test:serve",
-    "pretest:build": "npm run clean",
-    "test:build": "NODE_ENV=production npm run build",
-    "test:serve": "NODE_ENV=production npm run serve",
-    "build": "npm run build:markup & npm run build:image & npm run build:script & npm run build:style",
-    "postbuild": "npm run copy",
-    "build:markup": "node bin/posthtml.js",
-    "build:style": "postcss $npm_package_config_src/$npm_package_config_ptrn_build_style -o $npm_package_config_dest/$npm_package_config_ptrn_build_style",
-    "build:script": "rollup -c",
-    "build:image": "node bin/imagemin.js",
-    "copy": "cpx $npm_package_config_src/$npm_package_config_ptrn_copy $npm_package_config_dest",
-    "copy:target": "cpx",
-    "clean": "rimraf $npm_package_config_dest/*",
-    "clean:target": "rimraf",
-    "serve": "browser-sync start -c browsersync.config.js",
-    "preversion": "npm run test:build && git add -A $npm_package_config_dest || exit 0",
+    "prestart": "npm run clean",
+    "start": "parcel pages/**/*.{html,ejs} --target development",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prebuild": "npm run clean",
+    "build": "parcel build pages/**/*.{html,ejs} --target production",
+    "clean": "rimraf dist/*",
     "postversion": "git push && git push --tags"
   },
   "dependencies": {
-    "autotrack": "^2.4.1"
+    "sanitize.css": "^13.0.0"
   },
   "devDependencies": {
-    "browser-sync": "^2.24.4",
-    "cpx": "^1.5.0",
-    "css-declaration-sorter": "^3.0.1",
-    "cssnano": "^3.10.0",
-    "eslint-config-google": "^0.9.1",
-    "globby": "^8.0.1",
-    "imagemin": "^5.3.1",
-    "imagemin-mozjpeg": "^7.0.0",
-    "imagemin-pngquant": "^5.1.0",
-    "imagemin-svgo": "^6.0.0",
-    "node-cmd": "^3.0.0",
-    "perfectionist": "^2.4.0",
-    "postcss-cli": "^5.0.0",
-    "postcss-cssnext": "^3.1.0",
-    "postcss-extend": "^1.0.5",
-    "postcss-import": "^11.1.0",
-    "postcss-import-url": "^3.0.4",
+    "parcel": "^2.0.1",
+    "parcel-namer-rewrite": "^2.0.0-rc.1",
+    "parcel-reporter-static-files-copy": "^1.3.4",
+    "parcel-resolver-exclude-assets": "^2.0.0",
+    "parcel-transformer-ejs": "^0.2.0",
+    "postcss": "^8.4.5",
+    "postcss-import": "^14.0.2",
     "postcss-nested": "^3.0.0",
-    "postcss-reporter": "^5.0.0",
-    "posthtml": "^0.11.3",
-    "posthtml-beautify": "^0.2.0",
-    "posthtml-bem": "^0.2.2",
-    "posthtml-expressions": "^1.1.0",
-    "posthtml-extend": "^0.2.1",
-    "posthtml-hint": "^0.8.1",
-    "posthtml-load-config": "^1.0.0",
-    "rimraf": "^2.6.2",
-    "rollup": "^0.58.2",
-    "rollup-plugin-buble": "^0.19.2",
-    "rollup-plugin-commonjs": "^9.1.3",
-    "rollup-plugin-eslint": "^4.0.0",
-    "rollup-plugin-node-resolve": "^3.3.0",
-    "stylelint": "^9.2.0",
-    "stylelint-config-recommended": "^2.1.0"
-  }
+    "postcss-preset-env": "^7.0.1",
+    "postcss-relaxed-unit": "^1.1.1",
+    "rimraf": "^2.6.2"
+  },
+  "targets": {
+    "development": {
+      "distDir": "dist/",
+      "publicUrl": "/"
+    },
+    "production": {
+      "distDir": "dist/",
+      "publicUrl": "/",
+      "sourceMap": false
+    }
+  },
+  "browserslist": [
+    "IE 11",
+    "last 2 Edge versions",
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Safari versions",
+    "last 2 iOS versions",
+    "last 2 ChromeAndroid versions",
+    "> 5% in JP"
+  ],
+  "resolverExcludeAssets": [
+    "/favicon.ico",
+    "/favicon.svg",
+    "/apple-touch-icon.png"
+  ],
+  "parcel-namer-rewrite": {
+    "chain": "@parcel/namer-default",
+    "rules": {
+      "(.*).[ps]?css": "assets/styles/$1.{hash}.css",
+      "(.*).js": "assets/scripts/$1.{hash}.js",
+      "(.*).(png|jpg|gif|webp|svg)": "assets/static/$1.{hash}.$2"
+    }
+  },
+  "staticFiles": {}
 }

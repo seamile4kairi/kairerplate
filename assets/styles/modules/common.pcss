@@ -1,0 +1,77 @@
+/**
+ * Common styles
+ * -------------------------------------------------------------------------- */
+
+@import 'sanitize.css';
+
+html {
+  height: -webkit-fill-available;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  background-color: var(--color-base-light);
+  color: var(--color-text-default);
+  font-size: 14cp;
+}
+
+picture,
+source,
+img {
+  max-width: 100%;
+}
+
+/**
+* Layouts
+* -------------------------------------------------------------------------- */
+
+.main {
+  flex-grow: 1;
+}
+
+.container {
+  margin: auto;
+  @media (--as-sp) {
+    padding: 0 16cp;
+  }
+  @media (--as-pc) {
+    width: 960cp;
+    padding: 0 24cp;
+  }
+}
+
+/**
+* Utilities
+* -------------------------------------------------------------------------- */
+
+.hidden {
+  display: none;
+  &--on_small {
+    @media (--on-small) {
+      display: none;
+    }
+  }
+  &--on_medium {
+    @media (--on-medium) {
+      display: none;
+    }
+  }
+  &--on_large {
+    @media (--on-large) {
+      display: none;
+    }
+  }
+  &--as_sp {
+    @media (--as-sp) {
+      display: none;
+    }
+  }
+  &--as_pc {
+    @media (--as-pc) {
+      display: none;
+    }
+  }
+}

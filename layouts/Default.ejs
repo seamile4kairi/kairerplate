@@ -1,0 +1,31 @@
+<%-
+include('/layouts/modules/block')
+%><!DOCTYPE html>
+<html lang="<%= lang || 'ja' %>">
+
+<head>
+<%- include('/layouts/modules/prepend-head') %>
+<%- include('/layouts/modules/meta', {
+  path,
+  title,
+  description,
+  thumbnail,
+  locale,
+  og_type,
+  og_site_name,
+  twitter_card,
+}) %>
+<%- include('/layouts/modules/append-head') %>
+</head>
+
+<body>
+<%- include('/layouts/modules/prepend-body') %>
+<%- include('/components/organisms/SiteHeader/SiteHeader') %>
+<main class="main" role="main">
+<%- block(Contents) %>
+</main>
+<%- include('/components/organisms/SiteFooter/SiteFooter') %>
+<%- include('/layouts/modules/append-body') %>
+</body>
+
+</html>
