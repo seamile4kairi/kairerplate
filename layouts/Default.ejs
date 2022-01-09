@@ -1,6 +1,6 @@
 <%- include('/layouts/modules/block') -%>
 <!DOCTYPE html>
-<html lang="<%= $meta.lang || 'ja' %>">
+<html lang="<%= $meta.lang || locals.$meta.lang %>">
 
 <head>
 <%- include('/layouts/modules/prepend-head') -%>
