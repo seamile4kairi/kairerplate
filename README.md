@@ -1,7 +1,7 @@
-Kairi Template
-==============
+Kairerplate
+===========
 
-The website builder for/by Kairi KAWASAKI.
+The website boilerplate for/by Kairi KAWASAKI.
 
 
 Requirement
