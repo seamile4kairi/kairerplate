@@ -8,10 +8,10 @@
   "license": "MIT",
   "scripts": {
     "prestart": "npm run clean",
-    "start": "parcel pages/**/*.{html,ejs} --target development",
+    "start": "parcel 'pages/**/*.{html,ejs}' --target development",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prebuild": "npm run clean",
-    "build": "parcel build pages/**/*.{html,ejs} --target production",
+    "build": "parcel build 'pages/**/*.{html,ejs}' --target production",
     "clean": "rimraf dist/*",
     "postversion": "git push && git push --tags"
   },
