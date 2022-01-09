@@ -16,6 +16,7 @@
     "postversion": "git push && git push --tags"
   },
   "dependencies": {
+    "@hotwired/stimulus": "^3.0.1",
     "sanitize.css": "^13.0.0"
   },
   "devDependencies": {
