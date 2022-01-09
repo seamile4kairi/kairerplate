@@ -41,6 +41,7 @@ module.exports = {
         'custom-properties': {
           preserve: false,
         },
+        'system-ui-font-family': false,
       },
       importFrom: [
         {

@@ -2,18 +2,23 @@
  * Typography
  * -------------------------------------------------------------------------- */
 
-@media (--on-small) {
-  :root {
+:root {
+  /* Font Families */
+  --font-family-system:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  --font-family-default: var(--font-family-system);
+
+  /* Default Font Sizes */
+  @media (--on-small) {
     font-size: var(--rem-on-small);
   }
-}
-@media (--on-medium) {
-  :root {
+  @media (--on-medium) {
     font-size: var(--rem-on-medium);
   }
-}
-@media (--on-large) {
-  :root {
+  @media (--on-large) {
     font-size: var(--rem-on-large);
   }
 }
