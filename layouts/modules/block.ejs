@@ -1,10 +1,8 @@
-<%
-block = (block, fallback = '') => {
-  if (typeof block === 'string') return block
-  if (typeof block !== 'function') return fallback
+<% block = ($content) => {
+  if (typeof $content === 'string') return block
+  if (typeof $content !== 'function') return ''
 
   const arr = []
-  block(txt => arr.push(txt))
+  $content(txt => arr.push(txt))
   return arr.join('')
-}
-%>
+} -%>

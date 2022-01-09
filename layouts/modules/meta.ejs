@@ -1,64 +1,56 @@
-<%
-var $ = {
-  _origin: 'https://example.com',
-  _title: 'Blank Title',
-  _description: 'Blank description.',
-  _thumbnail: '/assets/static/ogimg.jpg',
-  _locale: 'ja_JP',
-  _og_type: 'website',
-  _og_site_name: 'Blank Site Name',
-  _twitter_card: 'summary_large_image',
+<% const $ = {
+  _: locals.$meta,
 
   get url () {
-    var _path = ('/' + path).replace(/^\/\//, '/')
-    return this._origin + _path
+    const _path = ('/' + path).replace(/^\/\//, '/')
+    return this._.origin + _path
   },
 
   get title () {
-    return title || this._title
+    return title || this._.title
   },
 
   get description () {
-    return description || this._description
+    return description || this._.description
   },
 
   get thumbnail () {
     if (/^http/.test(thumbnail)) return thumbnail
 
-    var _thumbnail = thumbnail || this._thumbnail
+    var _thumbnail = thumbnail || this._.thumbnail
     _thumbnail = ('/' + _thumbnail).replace(/^\/\//, '/')
 
-    return this._origin + _thumbnail
+    return this._.origin + _thumbnail
   },
 
   get locale () {
-    return locale || this._locale
+    return locale || this._.locale
   },
 
   get og_type () {
-    return og_type || this._og_type
+    return og_type || this._.og_type
   },
 
   get og_site_name () {
-    return og_site_name || this._og_site_name
+    return og_site_name || this._.og_site_name
   },
 
   get twitter_card () {
-    return twitter_card || this._twitter_card
+    return twitter_card || this._.twitter_card
   },
-}
-%><meta charset="UTF-8">
+} -%>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="format-detection" content="telephone=no">
 <title><%= $.title %></title>
 <meta name="description" content="<%= $.description %>">
 <link rel="canonical" href="<%= $.url %>">
-<!-- Favicons -->
+
 <link rel="icon" href="/favicon.ico" sizes="16x16">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<!-- Open Graph -->
+
 <meta property="og:type" content="<%= $.og_type %>">
 <meta property="og:title" content="<%= $.title %>">
 <meta property="og:description" content="<%= $.description %>">
@@ -66,7 +58,7 @@ var $ = {
 <meta property="og:image" content="<%= $.thumbnail %>">
 <meta property="og:locale" content="<%= $.locale %>">
 <meta property="og:site_name" content="<%= $.og_site_name %>">
-<!-- Twitter Card -->
+
 <meta name="twitter:card" content="<%= $.twitter_card %>">
 <meta name="twitter:title" content="<%= $.title %>">
 <meta name="twitter:description" content="<%= $.description %>">

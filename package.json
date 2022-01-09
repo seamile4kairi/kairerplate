@@ -1,21 +1,22 @@
 {
-  "name": "kairi_template",
+  "name": "kairerplate",
   "version": "1.0.0-0",
   "private": true,
-  "description": "The website builder for/by Kairi KAWASAKI.",
+  "description": "The website boilerplate for/by Kairi KAWASAKI.",
   "author": "Kairi <seamile.rivercape@gmail.com>",
   "repository": "https://github.com/seamile4kairi/personal_template",
   "license": "MIT",
   "scripts": {
     "prestart": "npm run clean",
-    "start": "parcel pages/**/*.{html,ejs} --target development",
+    "start": "parcel 'pages/**/*.{html,ejs}' --target development",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prebuild": "npm run clean",
-    "build": "parcel build pages/**/*.{html,ejs} --target production",
+    "build": "parcel build 'pages/**/*.{html,ejs}' --target production",
     "clean": "rimraf dist/*",
     "postversion": "git push && git push --tags"
   },
   "dependencies": {
+    "@hotwired/stimulus": "^3.0.1",
     "sanitize.css": "^13.0.0"
   },
   "devDependencies": {
