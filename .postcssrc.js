@@ -20,9 +20,6 @@ const customProperties = {
 module.exports = {
   // cf.) https://github.com/postcss/postcss#options
   plugins: {
-    'postcss-import': {
-      // cf.) https://github.com/postcss/postcss-import#options
-    },
     'postcss-nested': {
       // cf.) https://github.com/postcss/postcss-nested#options
     },
