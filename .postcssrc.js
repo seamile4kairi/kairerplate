@@ -1,4 +1,5 @@
 const {
+  isPrd,
   canvas,
   viewport,
   rem,
@@ -40,7 +41,7 @@ module.exports = {
         // cf.) https://preset-env.cssdb.org/features
         'custom-media-queries': true,
         'custom-properties': {
-          preserve: false,
+          preserve: !isPrd,
         },
         'system-ui-font-family': false,
       },
@@ -49,6 +50,9 @@ module.exports = {
           customMedia,
           customProperties,
         },
+      ],
+      exportTo: [
+        'assets/styles/modules/preset.css',
       ],
     },
   }
