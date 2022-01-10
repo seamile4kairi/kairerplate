@@ -1,10 +1,14 @@
-const config = require('./.config')
+const {
+  canvas,
+  viewport,
+  rem,
+} = require('./.config')
 
 const customMedia = {
   // Breakpoints based on screen width
-  '--on-small': `(width < ${config.viewport.medium}px)`,
-  '--on-medium': `(width >= ${config.viewport.medium}px)`,
-  '--on-large': `(width >= ${config.viewport.large}px)`,
+  '--on-small': `(width < ${viewport.medium}px)`,
+  '--on-medium': `(width >= ${viewport.medium}px)`,
+  '--on-large': `(width >= ${viewport.large}px)`,
   // Breakpoints based on design layouts
   '--as-sp': '(--on-small)',
   '--as-pc': '(--on-medium)',
@@ -12,9 +16,9 @@ const customMedia = {
 
 const customProperties = {
   // Root-font-size (rem) according to screen width
-  '--rem-on-small': `${config.rem / config.canvas.sp * 100}vw`,
-  '--rem-on-medium': `${config.rem / config.viewport.large * 100}vw`,
-  '--rem-on-large': `${config.rem}px`,
+  '--rem-on-small': `${rem / canvas.sp * 100}vw`,
+  '--rem-on-medium': `${rem / viewport.large * 100}vw`,
+  '--rem-on-large': `${rem}px`,
 }
 
 module.exports = {
@@ -27,7 +31,7 @@ module.exports = {
       // cf.) https://github.com/youncccat/postcss-relaxed-unit#options
       rules: {
         // cp = Canvas-Dependent Pixel (onomatopoeia)
-        cp: `div(${config.rem}).unit(rem)`,
+        cp: `div(${rem}).unit(rem)`,
       },
     },
     'postcss-preset-env': {
